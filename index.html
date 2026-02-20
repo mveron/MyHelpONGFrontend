@@ -83,14 +83,25 @@
 <body class="bg-shell text-night antialiased selection:bg-secondary selection:text-night">
   <header class="fixed top-4 left-4 right-4 z-50">
     <nav class="mx-auto max-w-6xl rounded-2xl border border-green-100/80 bg-white/90 backdrop-blur px-4 py-3 shadow-sm md:px-6" aria-label="Principal">
-      <div class="flex items-center justify-between gap-4">
+      <div class="flex items-center justify-between gap-2 md:gap-4">
         <a href="#" class="cursor-pointer font-display text-lg font-bold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"><i class="fa-solid fa-hand-holding-heart mr-2" aria-hidden="true"></i>MyHelp ONG</a>
         <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-green-900">
           <a class="cursor-pointer hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#features">Funciones</a>
           <a class="cursor-pointer hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#impact">Impacto</a>
           <a class="cursor-pointer hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#faq">FAQ</a>
         </div>
-        <a href="#download" class="cursor-pointer inline-flex min-h-11 items-center rounded-xl bg-cta px-4 py-2 text-sm font-bold text-white hover:bg-green-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2"><i class="fa-solid fa-download mr-2" aria-hidden="true"></i>Descargar App</a>
+        <div class="flex items-center gap-2">
+          <label for="language-select" class="sr-only">Idioma</label>
+          <div class="relative">
+            <i class="fa-solid fa-globe pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-green-700" aria-hidden="true"></i>
+            <select id="language-select" class="min-h-11 w-20 appearance-none rounded-xl border border-green-300 bg-white pl-8 pr-2 text-xs font-bold text-green-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <option value="es">ES</option>
+              <option value="en">EN</option>
+              <option value="pt">PT</option>
+            </select>
+          </div>
+          <a href="#download" class="cursor-pointer inline-flex min-h-11 items-center rounded-xl bg-cta px-4 py-2 text-sm font-bold text-white hover:bg-green-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2"><i class="fa-solid fa-download mr-2" aria-hidden="true"></i>Descargar App</a>
+        </div>
       </div>
     </nav>
   </header>
@@ -282,12 +293,15 @@
     const unsplashAccessKey = '6Q6pM5tWCPXXgkvrAd9b6dqsSoUfrBkFsPBLnkLVjlo';
     const gallery = document.getElementById('unsplash-gallery');
     const statusText = document.getElementById('gallery-status');
+    const languageSelect = document.getElementById('language-select');
+    const supportedLanguages = ['es', 'en', 'pt'];
     const translations = {
       en: {
         pageTitle: 'MyHelp ONG | Social help in your pocket',
         pageDescription: 'MyHelp ONG connects volunteers, donors, and local causes through a simple, fast, and secure mobile app.',
         text: {
           'Funciones': 'Features',
+          'Idioma': 'Language',
           'Impacto': 'Impact',
           'Descargar App': 'Download App',
           'App de impacto social': 'Social impact app',
@@ -348,6 +362,7 @@
         pageDescription: 'MyHelp ONG conecta voluntarios, doadores e causas locais por meio de um app movel simples, rapido e seguro.',
         text: {
           'Funciones': 'Funcionalidades',
+          'Idioma': 'Idioma',
           'Impacto': 'Impacto',
           'Descargar App': 'Baixar app',
           'App de impacto social': 'App de impacto social',
@@ -413,8 +428,19 @@
       return 'es';
     }
 
-    const activeLanguage = detectLanguage();
-    const langPack = translations[activeLanguage] || null;
+    function getPreferredLanguage() {
+      const storedLang = localStorage.getItem('myhelp_lang');
+      if (storedLang && supportedLanguages.includes(storedLang)) return storedLang;
+      return detectLanguage();
+    }
+
+    let activeLanguage = getPreferredLanguage();
+    let langPack = translations[activeLanguage] || null;
+
+    function syncLanguageSelect() {
+      if (!languageSelect) return;
+      languageSelect.value = activeLanguage;
+    }
 
     const skeletons = Array.from({ length: 6 }).map(() => `
       <div class="h-56 rounded-2xl bg-green-100 animate-pulse" aria-hidden="true"></div>
@@ -441,6 +467,7 @@
     function applyTranslations() {
       if (!langPack) {
         document.documentElement.lang = 'es';
+        syncLanguageSelect();
         return;
       }
 
@@ -484,6 +511,7 @@
       });
 
       statusText.textContent = langPack.statusLoading;
+      syncLanguageSelect();
     }
 
     function renderImages(urls) {
@@ -518,6 +546,15 @@
 
     applyTranslations();
     loadUnsplashGallery();
+
+    if (languageSelect) {
+      languageSelect.addEventListener('change', (event) => {
+        const selectedLang = event.target.value;
+        if (!supportedLanguages.includes(selectedLang)) return;
+        localStorage.setItem('myhelp_lang', selectedLang);
+        window.location.reload();
+      });
+    }
   </script>
 </body>
 </html>
