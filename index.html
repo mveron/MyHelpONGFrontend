@@ -204,8 +204,7 @@
               <li><i class="fa-solid fa-check text-primary mr-2" aria-hidden="true"></i>Soporte para onboarding inicial</li>
             </ul>
           </div>
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="rounded-2xl border border-green-200 bg-white p-6 shadow-sm">
-            <input type="hidden" name="form-name" value="contact" />
+          <form id="contact-form" name="contact" method="POST" action="/api/contact" class="rounded-2xl border border-green-200 bg-white p-6 shadow-sm">
             <p class="hidden">
               <label>No completar este campo: <input name="bot-field" /></label>
             </p>
@@ -227,10 +226,11 @@
                 <label for="message" class="mb-1 block text-sm font-bold text-ink">Mensaje</label>
                 <textarea id="message" name="message" rows="4" autocomplete="off" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Cuentanos que necesitas implementar… Ej: Gestion de voluntariado"></textarea>
               </div>
-              <button type="submit" class="cursor-pointer inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white hover:bg-green-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+              <button id="contact-submit" type="submit" class="cursor-pointer inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white hover:bg-green-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 <i class="fa-regular fa-paper-plane mr-2" aria-hidden="true"></i>
                 Enviar consulta
               </button>
+              <p id="contact-status" class="text-sm font-semibold text-green-800" aria-live="polite"></p>
             </div>
           </form>
         </div>
@@ -251,6 +251,9 @@
     const gallery = document.getElementById('unsplash-gallery');
     const statusText = document.getElementById('gallery-status');
     const languageSelect = document.getElementById('language-select');
+    const contactForm = document.getElementById('contact-form');
+    const contactStatus = document.getElementById('contact-status');
+    const contactSubmitButton = document.getElementById('contact-submit');
     const supportedLanguages = ['es', 'en', 'pt'];
     const translations = {
       en: {
@@ -312,7 +315,10 @@
         statusLoading: 'Loading images…',
         statusLoaded: 'Images loaded from Unsplash API',
         statusFallback: 'Fallback mode enabled (no Unsplash API connection)',
-        ngoPrefix: 'Partner NGO:'
+        ngoPrefix: 'Partner NGO:',
+        contactSending: 'Sending message…',
+        contactSuccess: 'Message sent successfully. We will contact you soon.',
+        contactError: 'We could not send your message. Please try again in a few minutes.'
       },
       pt: {
         pageTitle: 'MyHelp ONG | Ajuda social no seu bolso',
@@ -373,7 +379,10 @@
         statusLoading: 'Carregando imagens…',
         statusLoaded: 'Imagens carregadas da API Unsplash',
         statusFallback: 'Modo fallback ativado (sem conexao com a API Unsplash)',
-        ngoPrefix: 'ONG parceira:'
+        ngoPrefix: 'ONG parceira:',
+        contactSending: 'Enviando mensagem…',
+        contactSuccess: 'Mensagem enviada com sucesso. Entraremos em contato em breve.',
+        contactError: 'Nao foi possivel enviar sua mensagem. Tente novamente em alguns minutos.'
       }
     };
 
@@ -393,6 +402,11 @@
 
     let activeLanguage = getPreferredLanguage();
     let langPack = translations[activeLanguage] || null;
+    const contactText = {
+      sending: 'Enviando mensaje…',
+      success: 'Mensaje enviado correctamente. Te contactaremos pronto.',
+      error: 'No se pudo enviar tu mensaje. Intenta nuevamente en unos minutos.'
+    };
 
     function syncLanguageSelect() {
       if (!languageSelect) return;
@@ -635,6 +649,63 @@
         if (!supportedLanguages.includes(selectedLang)) return;
         localStorage.setItem('myhelp_lang', selectedLang);
         window.location.reload();
+      });
+    }
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        if (contactSubmitButton) {
+          contactSubmitButton.disabled = true;
+        }
+
+        const sendingText = langPack ? langPack.contactSending : contactText.sending;
+        const successText = langPack ? langPack.contactSuccess : contactText.success;
+        const errorText = langPack ? langPack.contactError : contactText.error;
+
+        if (contactStatus) {
+          contactStatus.textContent = sendingText;
+          contactStatus.className = 'text-sm font-semibold text-green-800';
+        }
+
+        try {
+          const formData = new FormData(contactForm);
+          const payload = {
+            name: String(formData.get('name') || ''),
+            email: String(formData.get('email') || ''),
+            organization: String(formData.get('organization') || ''),
+            message: String(formData.get('message') || ''),
+            botField: String(formData.get('bot-field') || '')
+          };
+
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) {
+            throw new Error('Contact request failed');
+          }
+
+          contactForm.reset();
+          if (contactStatus) {
+            contactStatus.textContent = successText;
+            contactStatus.className = 'text-sm font-semibold text-green-700';
+          }
+        } catch (error) {
+          if (contactStatus) {
+            contactStatus.textContent = errorText;
+            contactStatus.className = 'text-sm font-semibold text-red-700';
+          }
+        } finally {
+          if (contactSubmitButton) {
+            contactSubmitButton.disabled = false;
+          }
+        }
       });
     }
   </script>
