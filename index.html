@@ -223,12 +223,58 @@
         </div>
       </div>
     </section>
+
+    <section id="contact" class="py-16 md:py-20 bg-white">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 rounded-3xl border border-green-200 bg-green-50 p-6 md:grid-cols-2 md:p-10">
+          <div>
+            <p class="inline-flex items-center rounded-full border border-green-200 bg-white px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">Contacto</p>
+            <h2 class="mt-4 font-display text-3xl font-extrabold text-ink">Hablemos sobre tu ONG</h2>
+            <p class="mt-4 text-green-900 leading-7">Completa el formulario y te contactamos para mostrarte como implementar MyHelp ONG en tu organizacion.</p>
+            <ul class="mt-6 space-y-3 text-sm text-green-900">
+              <li><i class="fa-solid fa-check text-primary mr-2" aria-hidden="true"></i>Respuesta en menos de 24 horas</li>
+              <li><i class="fa-solid fa-check text-primary mr-2" aria-hidden="true"></i>Demo guiada para tu equipo</li>
+              <li><i class="fa-solid fa-check text-primary mr-2" aria-hidden="true"></i>Soporte para onboarding inicial</li>
+            </ul>
+          </div>
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="rounded-2xl border border-green-200 bg-white p-6 shadow-sm">
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden">
+              <label>No completar este campo: <input name="bot-field" /></label>
+            </p>
+
+            <div class="space-y-4">
+              <div>
+                <label for="name" class="mb-1 block text-sm font-bold text-ink">Nombre</label>
+                <input id="name" name="name" type="text" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Tu nombre completo" />
+              </div>
+              <div>
+                <label for="email" class="mb-1 block text-sm font-bold text-ink">Email</label>
+                <input id="email" name="email" type="email" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="tu@email.org" />
+              </div>
+              <div>
+                <label for="organization" class="mb-1 block text-sm font-bold text-ink">ONG / Organizacion</label>
+                <input id="organization" name="organization" type="text" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Nombre de tu ONG" />
+              </div>
+              <div>
+                <label for="message" class="mb-1 block text-sm font-bold text-ink">Mensaje</label>
+                <textarea id="message" name="message" rows="4" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Cuentanos que necesitas implementar"></textarea>
+              </div>
+              <button type="submit" class="cursor-pointer inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white hover:bg-green-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                <i class="fa-regular fa-paper-plane mr-2" aria-hidden="true"></i>
+                Enviar consulta
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="border-t border-green-200 bg-white">
     <div class="mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 py-8 text-center text-sm text-green-800 sm:px-6 lg:px-8 md:flex-row md:items-center md:justify-between md:text-left">
       <p>© 2026 MyHelp ONG. Tecnologia para causas que importan.</p>
-      <a href="#" class="cursor-pointer font-bold text-primary hover:text-green-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"><i class="fa-regular fa-envelope mr-2" aria-hidden="true"></i>Contacto</a>
+      <a href="#contact" class="cursor-pointer font-bold text-primary hover:text-green-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"><i class="fa-regular fa-envelope mr-2" aria-hidden="true"></i>Contacto</a>
     </div>
   </footer>
 
