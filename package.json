@@ -1,0 +1,13 @@
+{
+  "name": "myhelp-ong-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i ./app.css -o ./dist/styles.css --minify",
+    "watch:css": "npx @tailwindcss/cli -i ./app.css -o ./dist/styles.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "tailwindcss": "^4.1.13"
+  }
+}
