@@ -47,6 +47,9 @@
           <a class="cursor-pointer hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#contact">Contacto</a>
         </div>
         <div class="flex items-center gap-2">
+          <button id="mobile-menu-toggle" type="button" class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-green-300 bg-white text-green-900 transition-colors duration-200 hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:hidden" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu-panel">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
           <label for="language-select" class="sr-only">Idioma</label>
           <div class="relative">
             <i class="fa-solid fa-globe pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-green-700" aria-hidden="true"></i>
@@ -57,6 +60,14 @@
             </select>
           </div>
           <a href="#download" class="cursor-pointer inline-flex min-h-11 items-center rounded-xl bg-cta px-4 py-2 text-sm font-bold text-white hover:bg-green-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2"><i class="fa-solid fa-download mr-2" aria-hidden="true"></i>Descargar App</a>
+        </div>
+      </div>
+      <div id="mobile-menu-panel" class="hidden border-t border-green-200 pt-3 mt-3 md:hidden">
+        <div class="flex flex-col gap-2 text-sm font-semibold text-green-900">
+          <a class="mobile-menu-link cursor-pointer rounded-lg px-3 py-2 hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" href="#features">Funciones</a>
+          <a class="mobile-menu-link cursor-pointer rounded-lg px-3 py-2 hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" href="#impact">Impacto</a>
+          <a class="mobile-menu-link cursor-pointer rounded-lg px-3 py-2 hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" href="#faq">FAQ</a>
+          <a class="mobile-menu-link cursor-pointer rounded-lg px-3 py-2 hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" href="#contact">Contacto</a>
         </div>
       </div>
     </nav>
@@ -217,6 +228,7 @@
               <div>
                 <label for="email" class="mb-1 block text-sm font-bold text-ink">Email</label>
                 <input id="email" name="email" type="email" autocomplete="email" spellcheck="false" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="tu@email.org… Ej: ana@ong.org" />
+                <p id="email-error" class="mt-1 text-sm font-semibold text-red-700" aria-live="polite"></p>
               </div>
               <div>
                 <label for="organization" class="mb-1 block text-sm font-bold text-ink">ONG / Organizacion</label>
@@ -224,7 +236,8 @@
               </div>
               <div>
                 <label for="message" class="mb-1 block text-sm font-bold text-ink">Mensaje</label>
-                <textarea id="message" name="message" rows="4" autocomplete="off" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Cuentanos que necesitas implementar… Ej: Gestion de voluntariado"></textarea>
+                <textarea id="message" name="message" rows="4" minlength="20" autocomplete="off" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Cuentanos que necesitas implementar… Ej: Gestion de voluntariado"></textarea>
+                <p id="message-error" class="mt-1 text-sm font-semibold text-red-700" aria-live="polite"></p>
               </div>
               <button id="contact-submit" type="submit" class="cursor-pointer inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white hover:bg-green-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 <i class="fa-regular fa-paper-plane mr-2" aria-hidden="true"></i>
@@ -251,9 +264,16 @@
     const gallery = document.getElementById('unsplash-gallery');
     const statusText = document.getElementById('gallery-status');
     const languageSelect = document.getElementById('language-select');
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
     const contactForm = document.getElementById('contact-form');
     const contactStatus = document.getElementById('contact-status');
     const contactSubmitButton = document.getElementById('contact-submit');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    const emailError = document.getElementById('email-error');
+    const messageError = document.getElementById('message-error');
     const supportedLanguages = ['es', 'en', 'pt'];
     const translations = {
       en: {
@@ -318,7 +338,9 @@
         ngoPrefix: 'Partner NGO:',
         contactSending: 'Sending message…',
         contactSuccess: 'Message sent successfully. We will contact you soon.',
-        contactError: 'We could not send your message. Please try again in a few minutes.'
+        contactError: 'We could not send your message. Please try again in a few minutes.',
+        invalidEmail: 'Enter a valid email address.',
+        shortMessage: 'Write at least 20 characters in your message.'
       },
       pt: {
         pageTitle: 'MyHelp ONG | Ajuda social no seu bolso',
@@ -382,7 +404,9 @@
         ngoPrefix: 'ONG parceira:',
         contactSending: 'Enviando mensagem…',
         contactSuccess: 'Mensagem enviada com sucesso. Entraremos em contato em breve.',
-        contactError: 'Nao foi possivel enviar sua mensagem. Tente novamente em alguns minutos.'
+        contactError: 'Nao foi possivel enviar sua mensagem. Tente novamente em alguns minutos.',
+        invalidEmail: 'Digite um email valido.',
+        shortMessage: 'Escreva pelo menos 20 caracteres na mensagem.'
       }
     };
 
@@ -405,8 +429,81 @@
     const contactText = {
       sending: 'Enviando mensaje…',
       success: 'Mensaje enviado correctamente. Te contactaremos pronto.',
-      error: 'No se pudo enviar tu mensaje. Intenta nuevamente en unos minutos.'
+      error: 'No se pudo enviar tu mensaje. Intenta nuevamente en unos minutos.',
+      invalidEmail: 'Ingresa un email valido.',
+      shortMessage: 'Escribe al menos 20 caracteres en el mensaje.'
     };
+
+    let isEmailTouched = false;
+    let isMessageTouched = false;
+
+    function getValidationTexts() {
+      return {
+        invalidEmail: langPack ? langPack.invalidEmail : contactText.invalidEmail,
+        shortMessage: langPack ? langPack.shortMessage : contactText.shortMessage
+      };
+    }
+
+    function setInputError(input, errorNode, message) {
+      if (!input || !errorNode) return;
+      const hasError = Boolean(message);
+      input.setAttribute('aria-invalid', hasError ? 'true' : 'false');
+      if (hasError) {
+        input.classList.add('border-red-500');
+        input.classList.remove('border-green-300');
+      } else {
+        input.classList.remove('border-red-500');
+        input.classList.add('border-green-300');
+      }
+      errorNode.textContent = message || '';
+    }
+
+    function validateEmail(showError = false) {
+      if (!emailInput) return true;
+      const value = String(emailInput.value || '').trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const isValid = value.length > 0 ? emailRegex.test(value) : false;
+      const texts = getValidationTexts();
+      if (showError || isEmailTouched) {
+        setInputError(emailInput, emailError, isValid ? '' : texts.invalidEmail);
+      }
+      return isValid;
+    }
+
+    function validateMessage(showError = false) {
+      if (!messageInput) return true;
+      const value = String(messageInput.value || '').trim();
+      const isValid = value.length >= 20;
+      const texts = getValidationTexts();
+      if (showError || isMessageTouched) {
+        setInputError(messageInput, messageError, isValid ? '' : texts.shortMessage);
+      }
+      return isValid;
+    }
+
+    function updateSubmitState() {
+      if (!contactSubmitButton) return;
+      const emailOk = validateEmail(false);
+      const messageOk = validateMessage(false);
+      contactSubmitButton.disabled = !(emailOk && messageOk);
+    }
+
+    function closeMobileMenu() {
+      if (!mobileMenuToggle || !mobileMenuPanel) return;
+      mobileMenuPanel.classList.add('hidden');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleMobileMenu() {
+      if (!mobileMenuToggle || !mobileMenuPanel) return;
+      const isHidden = mobileMenuPanel.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenuPanel.classList.remove('hidden');
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        closeMobileMenu();
+      }
+    }
 
     function syncLanguageSelect() {
       if (!languageSelect) return;
@@ -483,6 +580,8 @@
 
       statusText.textContent = langPack.statusLoading;
       syncLanguageSelect();
+      validateEmail(true);
+      validateMessage(true);
     }
 
     function renderImages(urls) {
@@ -652,9 +751,60 @@
       });
     }
 
+    if (mobileMenuToggle) {
+      mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    }
+
+    if (mobileMenuLinks.length) {
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeMobileMenu();
+      }
+    });
+
+    if (emailInput) {
+      emailInput.addEventListener('input', () => {
+        validateEmail(true);
+        updateSubmitState();
+      });
+      emailInput.addEventListener('blur', () => {
+        isEmailTouched = true;
+        validateEmail(true);
+        updateSubmitState();
+      });
+    }
+
+    if (messageInput) {
+      messageInput.addEventListener('input', () => {
+        validateMessage(true);
+        updateSubmitState();
+      });
+      messageInput.addEventListener('blur', () => {
+        isMessageTouched = true;
+        validateMessage(true);
+        updateSubmitState();
+      });
+    }
+
+    updateSubmitState();
+
     if (contactForm) {
       contactForm.addEventListener('submit', async (event) => {
         event.preventDefault();
+
+        isEmailTouched = true;
+        isMessageTouched = true;
+        const isEmailValid = validateEmail(true);
+        const isMessageValid = validateMessage(true);
+        if (!isEmailValid || !isMessageValid) {
+          updateSubmitState();
+          return;
+        }
 
         if (contactSubmitButton) {
           contactSubmitButton.disabled = true;
@@ -692,6 +842,11 @@
           }
 
           contactForm.reset();
+          isEmailTouched = false;
+          isMessageTouched = false;
+          validateEmail(false);
+          validateMessage(false);
+          updateSubmitState();
           if (contactStatus) {
             contactStatus.textContent = successText;
             contactStatus.className = 'text-sm font-semibold text-green-700';
