@@ -27,6 +27,9 @@
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://api.unsplash.com" />
+  <link rel="preconnect" href="https://api.qrserver.com" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -81,6 +84,7 @@
   </style>
 </head>
 <body class="bg-shell text-night antialiased selection:bg-secondary selection:text-night">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:font-bold focus:text-ink focus:outline-none focus:ring-2 focus:ring-primary">Saltar al contenido principal</a>
   <header class="fixed top-4 left-4 right-4 z-50">
     <nav class="mx-auto max-w-6xl rounded-2xl border border-green-100/80 bg-white/90 backdrop-blur px-4 py-3 shadow-sm md:px-6" aria-label="Principal">
       <div class="flex items-center justify-between gap-2 md:gap-4">
@@ -89,6 +93,7 @@
           <a class="cursor-pointer hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#features">Funciones</a>
           <a class="cursor-pointer hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#impact">Impacto</a>
           <a class="cursor-pointer hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#faq">FAQ</a>
+          <a class="cursor-pointer hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#contact">Contacto</a>
         </div>
         <div class="flex items-center gap-2">
           <label for="language-select" class="sr-only">Idioma</label>
@@ -106,7 +111,7 @@
     </nav>
   </header>
 
-  <main class="overflow-x-hidden">
+  <main id="main-content" class="overflow-x-hidden">
     <section class="relative pt-36 pb-20 md:pt-40 md:pb-28">
       <div class="absolute inset-0 -z-10 bg-grid"></div>
       <div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
@@ -129,14 +134,14 @@
           <div class="absolute -top-4 -left-4 h-24 w-24 rounded-2xl bg-secondary/35 blur-xl"></div>
           <div class="absolute -bottom-5 -right-6 h-28 w-28 rounded-full bg-cta/30 blur-2xl"></div>
           <div class="relative rounded-[2.2rem] border-8 border-night bg-night p-3 shadow-2xl">
-            <img class="h-[520px] w-full rounded-[1.4rem] object-cover" src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80" alt="Voluntaria usando la aplicacion MyHelp ONG en un evento social" loading="lazy" />
+            <img class="h-[520px] w-full rounded-[1.4rem] object-cover" src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80" alt="Voluntaria usando la aplicacion MyHelp ONG en un evento social" width="900" height="1200" loading="lazy" />
             <div class="absolute left-1/2 top-2 h-5 w-28 -translate-x-1/2 rounded-full bg-night"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="features" class="py-16 md:py-20">
+    <section id="features" class="scroll-mt-28 py-16 md:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 class="font-display text-3xl font-extrabold text-ink">Todo lo que tu ONG necesita para coordinar ayuda</h2>
         <div class="mt-8 grid gap-5 md:grid-cols-3">
@@ -165,11 +170,11 @@
       </div>
     </section>
 
-    <section id="impact" class="py-16 md:py-20 bg-white">
+    <section id="impact" class="scroll-mt-28 py-16 md:py-20 bg-white">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="flex items-end justify-between gap-4">
           <h2 class="font-display text-3xl font-extrabold text-ink">Historias reales de comunidad</h2>
-          <p id="gallery-status" class="text-sm font-semibold text-green-700">Cargando imagenes...</p>
+          <p id="gallery-status" class="text-sm font-semibold text-green-700">Cargando imagenes…</p>
         </div>
         <div id="unsplash-gallery" class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite"></div>
       </div>
@@ -181,15 +186,15 @@
           <h2 class="font-display text-3xl font-extrabold">Lo que dicen las organizaciones</h2>
           <div class="mt-7 grid gap-4 md:grid-cols-3">
             <blockquote class="rounded-2xl bg-white/15 p-5">
-              <p class="leading-7">"Redujimos 40% el tiempo de coordinacion de brigadas en solo dos meses."</p>
+              <p class="leading-7">“Redujimos 40% el tiempo de coordinacion de brigadas en solo dos meses.”</p>
               <footer class="mt-3 text-sm font-bold">Fundacion Barrio Vivo</footer>
             </blockquote>
             <blockquote class="rounded-2xl bg-white/15 p-5">
-              <p class="leading-7">"La transparencia de donaciones nos ayudo a ganar confianza de nuevos aliados."</p>
+              <p class="leading-7">“La transparencia de donaciones nos ayudo a ganar confianza de nuevos aliados.”</p>
               <footer class="mt-3 text-sm font-bold">Casa Solidaria</footer>
             </blockquote>
             <blockquote class="rounded-2xl bg-white/15 p-5">
-              <p class="leading-7">"MyHelp nos dio trazabilidad total desde la donacion hasta la entrega."</p>
+              <p class="leading-7">“MyHelp nos dio trazabilidad total desde la donacion hasta la entrega.”</p>
               <footer class="mt-3 text-sm font-bold">Comedor Esperanza</footer>
             </blockquote>
           </div>
@@ -197,7 +202,7 @@
       </div>
     </section>
 
-    <section id="faq" class="py-16 md:py-20 bg-white">
+    <section id="faq" class="scroll-mt-28 py-16 md:py-20 bg-white">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <h2 class="font-display text-3xl font-extrabold text-ink">Preguntas frecuentes</h2>
         <div class="mt-6 space-y-3">
@@ -217,7 +222,7 @@
       </div>
     </section>
 
-    <section id="download" class="py-16 md:py-20">
+    <section id="download" class="scroll-mt-28 py-16 md:py-20">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-8 rounded-3xl border border-green-200 bg-white p-8 md:grid-cols-2 md:items-center md:p-10">
           <div>
@@ -229,13 +234,13 @@
             </div>
           </div>
           <div class="flex items-center justify-center">
-            <img class="h-44 w-44 rounded-2xl border border-green-200 p-2" src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://myhelp-ong.app" alt="Codigo QR para descargar MyHelp ONG" loading="lazy" />
+            <img class="h-44 w-44 rounded-2xl border border-green-200 p-2" src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://myhelp-ong.app" alt="Codigo QR para descargar MyHelp ONG" width="240" height="240" loading="lazy" />
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="py-16 md:py-20 bg-white">
+    <section id="contact" class="scroll-mt-28 py-16 md:py-20 bg-white">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-8 rounded-3xl border border-green-200 bg-green-50 p-6 md:grid-cols-2 md:p-10">
           <div>
@@ -257,19 +262,19 @@
             <div class="space-y-4">
               <div>
                 <label for="name" class="mb-1 block text-sm font-bold text-ink">Nombre</label>
-                <input id="name" name="name" type="text" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Tu nombre completo" />
+                <input id="name" name="name" type="text" autocomplete="name" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Tu nombre completo… Ej: Ana Perez" />
               </div>
               <div>
                 <label for="email" class="mb-1 block text-sm font-bold text-ink">Email</label>
-                <input id="email" name="email" type="email" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="tu@email.org" />
+                <input id="email" name="email" type="email" autocomplete="email" spellcheck="false" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="tu@email.org… Ej: ana@ong.org" />
               </div>
               <div>
                 <label for="organization" class="mb-1 block text-sm font-bold text-ink">ONG / Organizacion</label>
-                <input id="organization" name="organization" type="text" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Nombre de tu ONG" />
+                <input id="organization" name="organization" type="text" autocomplete="organization" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Nombre de tu ONG… Ej: Fundacion Barrio Vivo" />
               </div>
               <div>
                 <label for="message" class="mb-1 block text-sm font-bold text-ink">Mensaje</label>
-                <textarea id="message" name="message" rows="4" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Cuentanos que necesitas implementar"></textarea>
+                <textarea id="message" name="message" rows="4" autocomplete="off" required class="w-full rounded-xl border border-green-300 bg-white px-4 py-3 text-base text-night placeholder:text-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" placeholder="Cuentanos que necesitas implementar… Ej: Gestion de voluntariado"></textarea>
               </div>
               <button type="submit" class="cursor-pointer inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white hover:bg-green-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 <i class="fa-regular fa-paper-plane mr-2" aria-hidden="true"></i>
@@ -321,9 +326,9 @@
           'Visualiza beneficiarios atendidos, horas de voluntariado y progreso de campañas con metricas claras.': 'View beneficiaries served, volunteer hours, and campaign progress with clear metrics.',
           'Historias reales de comunidad': 'Real community stories',
           'Lo que dicen las organizaciones': 'What organizations say',
-          '"Redujimos 40% el tiempo de coordinacion de brigadas en solo dos meses."': '"We reduced brigade coordination time by 40% in just two months."',
-          '"La transparencia de donaciones nos ayudo a ganar confianza de nuevos aliados."': '"Donation transparency helped us earn the trust of new partners."',
-          '"MyHelp nos dio trazabilidad total desde la donacion hasta la entrega."': '"MyHelp gave us full traceability from donation to delivery."',
+          '“Redujimos 40% el tiempo de coordinacion de brigadas en solo dos meses.”': '“We reduced brigade coordination time by 40% in just two months.”',
+          '“La transparencia de donaciones nos ayudo a ganar confianza de nuevos aliados.”': '“Donation transparency helped us earn the trust of new partners.”',
+          '“MyHelp nos dio trazabilidad total desde la donacion hasta la entrega.”': '“MyHelp gave us full traceability from donation to delivery.”',
           'Preguntas frecuentes': 'Frequently asked questions',
           'La app tiene costo para ONG?': 'Does the app have a cost for NGOs?',
           'Tenemos un plan gratuito para organizaciones pequeñas y planes escalables para redes grandes.': 'We offer a free plan for small organizations and scalable plans for larger networks.',
@@ -348,12 +353,12 @@
           '© 2026 MyHelp ONG. Tecnologia para causas que importan.': '© 2026 MyHelp ONG. Technology for causes that matter.'
         },
         placeholders: {
-          'Tu nombre completo': 'Your full name',
-          'tu@email.org': 'you@email.org',
-          'Nombre de tu ONG': 'Your NGO name',
-          'Cuentanos que necesitas implementar': 'Tell us what you need to implement'
+          'Tu nombre completo… Ej: Ana Perez': 'Your full name… Eg: Ana Perez',
+          'tu@email.org… Ej: ana@ong.org': 'you@email.org… Eg: ana@ngo.org',
+          'Nombre de tu ONG… Ej: Fundacion Barrio Vivo': 'Your NGO name… Eg: Barrio Vivo Foundation',
+          'Cuentanos que necesitas implementar… Ej: Gestion de voluntariado': 'Tell us what you need to implement… Eg: Volunteer management'
         },
-        statusLoading: 'Loading images...',
+        statusLoading: 'Loading images…',
         statusLoaded: 'Images loaded from Unsplash API',
         statusFallback: 'Fallback mode enabled (no Unsplash API connection)',
         ngoPrefix: 'Partner NGO:'
@@ -382,9 +387,9 @@
           'Visualiza beneficiarios atendidos, horas de voluntariado y progreso de campañas con metricas claras.': 'Visualize beneficiarios atendidos, horas de voluntariado e progresso das campanhas com metricas claras.',
           'Historias reales de comunidad': 'Historias reais da comunidade',
           'Lo que dicen las organizaciones': 'O que dizem as organizacoes',
-          '"Redujimos 40% el tiempo de coordinacion de brigadas en solo dos meses."': '"Reduzimos em 40% o tempo de coordenacao de brigadas em apenas dois meses."',
-          '"La transparencia de donaciones nos ayudo a ganar confianza de nuevos aliados."': '"A transparencia das doacoes nos ajudou a ganhar a confianca de novos parceiros."',
-          '"MyHelp nos dio trazabilidad total desde la donacion hasta la entrega."': '"MyHelp nos deu rastreabilidade total da doacao ate a entrega."',
+          '“Redujimos 40% el tiempo de coordinacion de brigadas en solo dos meses.”': '“Reduzimos em 40% o tempo de coordenacao de brigadas em apenas dois meses.”',
+          '“La transparencia de donaciones nos ayudo a ganar confianza de nuevos aliados.”': '“A transparencia das doacoes nos ajudou a ganhar a confianca de novos parceiros.”',
+          '“MyHelp nos dio trazabilidad total desde la donacion hasta la entrega.”': '“MyHelp nos deu rastreabilidade total da doacao ate a entrega.”',
           'Preguntas frecuentes': 'Perguntas frequentes',
           'La app tiene costo para ONG?': 'O app tem custo para ONGs?',
           'Tenemos un plan gratuito para organizaciones pequeñas y planes escalables para redes grandes.': 'Temos um plano gratuito para organizacoes pequenas e planos escalaveis para redes maiores.',
@@ -409,12 +414,12 @@
           '© 2026 MyHelp ONG. Tecnologia para causas que importan.': '© 2026 MyHelp ONG. Tecnologia para causas que importam.'
         },
         placeholders: {
-          'Tu nombre completo': 'Seu nome completo',
-          'tu@email.org': 'seu@email.org',
-          'Nombre de tu ONG': 'Nome da sua ONG',
-          'Cuentanos que necesitas implementar': 'Conte para nos o que precisa implementar'
+          'Tu nombre completo… Ej: Ana Perez': 'Seu nome completo… Ex: Ana Perez',
+          'tu@email.org… Ej: ana@ong.org': 'seu@email.org… Ex: ana@ong.org',
+          'Nombre de tu ONG… Ej: Fundacion Barrio Vivo': 'Nome da sua ONG… Ex: Fundacao Bairro Vivo',
+          'Cuentanos que necesitas implementar… Ej: Gestion de voluntariado': 'Conte para nos o que precisa implementar… Ex: Gestao de voluntariado'
         },
-        statusLoading: 'Carregando imagens...',
+        statusLoading: 'Carregando imagens…',
         statusLoaded: 'Imagens carregadas da API Unsplash',
         statusFallback: 'Modo fallback ativado (sem conexao com a API Unsplash)',
         ngoPrefix: 'ONG parceira:'
