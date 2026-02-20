@@ -282,6 +282,139 @@
     const unsplashAccessKey = '6Q6pM5tWCPXXgkvrAd9b6dqsSoUfrBkFsPBLnkLVjlo';
     const gallery = document.getElementById('unsplash-gallery');
     const statusText = document.getElementById('gallery-status');
+    const translations = {
+      en: {
+        pageTitle: 'MyHelp ONG | Social help in your pocket',
+        pageDescription: 'MyHelp ONG connects volunteers, donors, and local causes through a simple, fast, and secure mobile app.',
+        text: {
+          'Funciones': 'Features',
+          'Impacto': 'Impact',
+          'Descargar App': 'Download App',
+          'App de impacto social': 'Social impact app',
+          'Conecta ayuda real con personas reales en minutos.': 'Connect real help with real people in minutes.',
+          'MyHelp ONG une voluntarios, donantes y organizaciones para resolver necesidades locales. Publica, coordina y mide impacto desde una sola app.': 'MyHelp ONG brings together volunteers, donors, and organizations to solve local needs. Publish, coordinate, and measure impact from one app.',
+          'Empieza gratis': 'Get started for free',
+          'Ver impacto': 'See impact',
+          'Voluntarios': 'Volunteers',
+          'ONG activas': 'Active NGOs',
+          'Todo lo que tu ONG necesita para coordinar ayuda': 'Everything your NGO needs to coordinate help',
+          'Alertas en tiempo real': 'Real-time alerts',
+          'Notificaciones instantaneas para responder emergencias, cambios de turno y nuevas solicitudes de ayuda.': 'Instant notifications to respond to emergencies, shift changes, and new help requests.',
+          'Gestor de recursos': 'Resource manager',
+          'Controla inventario, donaciones y entregas con trazabilidad para que cada aporte llegue donde debe.': 'Track inventory, donations, and deliveries so every contribution reaches the right place.',
+          'Reporte de impacto': 'Impact reporting',
+          'Visualiza beneficiarios atendidos, horas de voluntariado y progreso de campañas con metricas claras.': 'View beneficiaries served, volunteer hours, and campaign progress with clear metrics.',
+          'Historias reales de comunidad': 'Real community stories',
+          'Lo que dicen las organizaciones': 'What organizations say',
+          '"Redujimos 40% el tiempo de coordinacion de brigadas en solo dos meses."': '"We reduced brigade coordination time by 40% in just two months."',
+          '"La transparencia de donaciones nos ayudo a ganar confianza de nuevos aliados."': '"Donation transparency helped us earn the trust of new partners."',
+          '"MyHelp nos dio trazabilidad total desde la donacion hasta la entrega."': '"MyHelp gave us full traceability from donation to delivery."',
+          'Preguntas frecuentes': 'Frequently asked questions',
+          'La app tiene costo para ONG?': 'Does the app have a cost for NGOs?',
+          'Tenemos un plan gratuito para organizaciones pequeñas y planes escalables para redes grandes.': 'We offer a free plan for small organizations and scalable plans for larger networks.',
+          'Puedo invitar voluntarios por zona?': 'Can I invite volunteers by area?',
+          'Si. Puedes segmentar por distrito, disponibilidad y habilidades para activar turnos mas rapido.': 'Yes. You can segment by district, availability, and skills to activate shifts faster.',
+          'Cumple con privacidad de datos?': 'Does it meet data privacy standards?',
+          'Implementamos permisos por rol, cifrado en transito y buenas practicas de proteccion de datos.': 'We implement role-based permissions, in-transit encryption, and strong data protection practices.',
+          'Descarga MyHelp ONG y multiplica tu impacto': 'Download MyHelp ONG and multiply your impact',
+          'Disponible para iOS y Android. Activa campañas, coordina voluntarios y comparte resultados en tiempo real.': 'Available on iOS and Android. Launch campaigns, coordinate volunteers, and share results in real time.',
+          'Contacto': 'Contact',
+          'Hablemos sobre tu ONG': 'Let us talk about your NGO',
+          'Completa el formulario y te contactamos para mostrarte como implementar MyHelp ONG en tu organizacion.': 'Complete the form and we will contact you to show how to implement MyHelp ONG in your organization.',
+          'Respuesta en menos de 24 horas': 'Response in under 24 hours',
+          'Demo guiada para tu equipo': 'Guided demo for your team',
+          'Soporte para onboarding inicial': 'Support for initial onboarding',
+          'Nombre': 'Name',
+          'Email': 'Email',
+          'ONG / Organizacion': 'NGO / Organization',
+          'Mensaje': 'Message',
+          'Enviar consulta': 'Send inquiry',
+          'No completar este campo:': 'Do not fill this field:',
+          '© 2026 MyHelp ONG. Tecnologia para causas que importan.': '© 2026 MyHelp ONG. Technology for causes that matter.'
+        },
+        placeholders: {
+          'Tu nombre completo': 'Your full name',
+          'tu@email.org': 'you@email.org',
+          'Nombre de tu ONG': 'Your NGO name',
+          'Cuentanos que necesitas implementar': 'Tell us what you need to implement'
+        },
+        statusLoading: 'Loading images...',
+        statusLoaded: 'Images loaded from Unsplash API',
+        statusFallback: 'Fallback mode enabled (no Unsplash API connection)',
+        ngoPrefix: 'Partner NGO:'
+      },
+      pt: {
+        pageTitle: 'MyHelp ONG | Ajuda social no seu bolso',
+        pageDescription: 'MyHelp ONG conecta voluntarios, doadores e causas locais por meio de um app movel simples, rapido e seguro.',
+        text: {
+          'Funciones': 'Funcionalidades',
+          'Impacto': 'Impacto',
+          'Descargar App': 'Baixar app',
+          'App de impacto social': 'App de impacto social',
+          'Conecta ayuda real con personas reales en minutos.': 'Conecte ajuda real com pessoas reais em minutos.',
+          'MyHelp ONG une voluntarios, donantes y organizaciones para resolver necesidades locales. Publica, coordina y mide impacto desde una sola app.': 'MyHelp ONG une voluntarios, doadores e organizacoes para resolver necessidades locais. Publique, coordene e meca o impacto em um unico app.',
+          'Empieza gratis': 'Comece gratis',
+          'Ver impacto': 'Ver impacto',
+          'Voluntarios': 'Voluntarios',
+          'ONG activas': 'ONGs ativas',
+          'Todo lo que tu ONG necesita para coordinar ayuda': 'Tudo o que sua ONG precisa para coordenar ajuda',
+          'Alertas en tiempo real': 'Alertas em tempo real',
+          'Notificaciones instantaneas para responder emergencias, cambios de turno y nuevas solicitudes de ayuda.': 'Notificacoes instantaneas para responder emergencias, mudancas de turno e novos pedidos de ajuda.',
+          'Gestor de recursos': 'Gestao de recursos',
+          'Controla inventario, donaciones y entregas con trazabilidad para que cada aporte llegue donde debe.': 'Controle estoque, doacoes e entregas com rastreabilidade para que cada contribuicao chegue ao destino certo.',
+          'Reporte de impacto': 'Relatorio de impacto',
+          'Visualiza beneficiarios atendidos, horas de voluntariado y progreso de campañas con metricas claras.': 'Visualize beneficiarios atendidos, horas de voluntariado e progresso das campanhas com metricas claras.',
+          'Historias reales de comunidad': 'Historias reais da comunidade',
+          'Lo que dicen las organizaciones': 'O que dizem as organizacoes',
+          '"Redujimos 40% el tiempo de coordinacion de brigadas en solo dos meses."': '"Reduzimos em 40% o tempo de coordenacao de brigadas em apenas dois meses."',
+          '"La transparencia de donaciones nos ayudo a ganar confianza de nuevos aliados."': '"A transparencia das doacoes nos ajudou a ganhar a confianca de novos parceiros."',
+          '"MyHelp nos dio trazabilidad total desde la donacion hasta la entrega."': '"MyHelp nos deu rastreabilidade total da doacao ate a entrega."',
+          'Preguntas frecuentes': 'Perguntas frequentes',
+          'La app tiene costo para ONG?': 'O app tem custo para ONGs?',
+          'Tenemos un plan gratuito para organizaciones pequeñas y planes escalables para redes grandes.': 'Temos um plano gratuito para organizacoes pequenas e planos escalaveis para redes maiores.',
+          'Puedo invitar voluntarios por zona?': 'Posso convidar voluntarios por regiao?',
+          'Si. Puedes segmentar por distrito, disponibilidad y habilidades para activar turnos mas rapido.': 'Sim. Voce pode segmentar por distrito, disponibilidade e habilidades para ativar turnos mais rapido.',
+          'Cumple con privacidad de datos?': 'Cumpre com privacidade de dados?',
+          'Implementamos permisos por rol, cifrado en transito y buenas practicas de proteccion de datos.': 'Implementamos permissoes por funcao, criptografia em transito e boas praticas de protecao de dados.',
+          'Descarga MyHelp ONG y multiplica tu impacto': 'Baixe o MyHelp ONG e multiplique seu impacto',
+          'Disponible para iOS y Android. Activa campañas, coordina voluntarios y comparte resultados en tiempo real.': 'Disponivel para iOS e Android. Ative campanhas, coordene voluntarios e compartilhe resultados em tempo real.',
+          'Contacto': 'Contato',
+          'Hablemos sobre tu ONG': 'Vamos falar sobre sua ONG',
+          'Completa el formulario y te contactamos para mostrarte como implementar MyHelp ONG en tu organizacion.': 'Preencha o formulario e entraremos em contato para mostrar como implementar o MyHelp ONG na sua organizacao.',
+          'Respuesta en menos de 24 horas': 'Resposta em menos de 24 horas',
+          'Demo guiada para tu equipo': 'Demo guiada para sua equipe',
+          'Soporte para onboarding inicial': 'Suporte para onboarding inicial',
+          'Nombre': 'Nome',
+          'Email': 'Email',
+          'ONG / Organizacion': 'ONG / Organizacao',
+          'Mensaje': 'Mensagem',
+          'Enviar consulta': 'Enviar contato',
+          'No completar este campo:': 'Nao preencha este campo:',
+          '© 2026 MyHelp ONG. Tecnologia para causas que importan.': '© 2026 MyHelp ONG. Tecnologia para causas que importam.'
+        },
+        placeholders: {
+          'Tu nombre completo': 'Seu nome completo',
+          'tu@email.org': 'seu@email.org',
+          'Nombre de tu ONG': 'Nome da sua ONG',
+          'Cuentanos que necesitas implementar': 'Conte para nos o que precisa implementar'
+        },
+        statusLoading: 'Carregando imagens...',
+        statusLoaded: 'Imagens carregadas da API Unsplash',
+        statusFallback: 'Modo fallback ativado (sem conexao com a API Unsplash)',
+        ngoPrefix: 'ONG parceira:'
+      }
+    };
+
+    function detectLanguage() {
+      const browserLang = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+      if (browserLang.startsWith('en')) return 'en';
+      if (browserLang.startsWith('pt')) return 'pt';
+      if (browserLang.startsWith('es')) return 'es';
+      return 'es';
+    }
+
+    const activeLanguage = detectLanguage();
+    const langPack = translations[activeLanguage] || null;
 
     const skeletons = Array.from({ length: 6 }).map(() => `
       <div class="h-56 rounded-2xl bg-green-100 animate-pulse" aria-hidden="true"></div>
@@ -305,15 +438,64 @@
       'Puentes de Vida'
     ];
 
+    function applyTranslations() {
+      if (!langPack) {
+        document.documentElement.lang = 'es';
+        return;
+      }
+
+      document.documentElement.lang = activeLanguage;
+      document.title = langPack.pageTitle;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const ogDescription = document.querySelector('meta[property="og:description"]');
+      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+      const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+
+      if (metaDescription) metaDescription.setAttribute('content', langPack.pageDescription);
+      if (ogTitle) ogTitle.setAttribute('content', langPack.pageTitle);
+      if (ogDescription) ogDescription.setAttribute('content', langPack.pageDescription);
+      if (twitterTitle) twitterTitle.setAttribute('content', langPack.pageTitle);
+      if (twitterDescription) twitterDescription.setAttribute('content', langPack.pageDescription);
+
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          const tag = node.parentElement ? node.parentElement.tagName : '';
+          if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT') return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+
+      nodes.forEach((node) => {
+        const trimmed = node.nodeValue.trim();
+        const translated = langPack.text[trimmed];
+        if (translated) node.nodeValue = node.nodeValue.replace(trimmed, translated);
+      });
+
+      document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach((field) => {
+        const current = field.getAttribute('placeholder');
+        const translated = langPack.placeholders[current];
+        if (translated) field.setAttribute('placeholder', translated);
+      });
+
+      statusText.textContent = langPack.statusLoading;
+    }
+
     function renderImages(urls) {
       gallery.innerHTML = urls.map((item, idx) => {
         const url = typeof item === 'string' ? item : item.urls.regular;
         const alt = typeof item === 'string' ? `Escena comunitaria ${idx + 1}` : (item.alt_description || `Escena comunitaria ${idx + 1}`);
         const ngoName = ngoNames[idx % ngoNames.length];
+        const ngoPrefix = langPack ? langPack.ngoPrefix : 'ONG aliada:';
         return `
           <figure class="group overflow-hidden rounded-2xl border border-green-100 bg-white shadow-sm">
             <img src="${url}" alt="${alt}" class="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
-            <figcaption class="px-4 py-3 text-xs font-semibold text-green-800">ONG aliada: ${ngoName}</figcaption>
+            <figcaption class="px-4 py-3 text-xs font-semibold text-green-800">${ngoPrefix} ${ngoName}</figcaption>
           </figure>
         `;
       }).join('');
@@ -327,13 +509,14 @@
         const data = await res.json();
         if (!data.results || !data.results.length) throw new Error('No images found');
         renderImages(data.results);
-        statusText.textContent = 'Imagenes cargadas desde Unsplash API';
+        statusText.textContent = langPack ? langPack.statusLoaded : 'Imagenes cargadas desde Unsplash API';
       } catch (error) {
         renderImages(fallbackImages);
-        statusText.textContent = 'Modo fallback activo (sin conexion a Unsplash API)';
+        statusText.textContent = langPack ? langPack.statusFallback : 'Modo fallback activo (sin conexion a Unsplash API)';
       }
     }
 
+    applyTranslations();
     loadUnsplashGallery();
   </script>
 </body>
