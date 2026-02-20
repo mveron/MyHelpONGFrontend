@@ -289,6 +289,7 @@
     </div>
   </footer>
 
+  <script src="https://webmcp.dev/webmcp.js"></script>
   <script>
     const unsplashAccessKey = '6Q6pM5tWCPXXgkvrAd9b6dqsSoUfrBkFsPBLnkLVjlo';
     const gallery = document.getElementById('unsplash-gallery');
@@ -544,7 +545,132 @@
       }
     }
 
+    function initWebMCP() {
+      if (typeof WebMCP === 'undefined') return;
+
+      const mcp = new WebMCP({
+        color: '#15803D',
+        position: 'bottom-right',
+        size: '42px',
+        padding: '14px'
+      });
+
+      mcp.registerTool(
+        'navigate_section',
+        'Scroll to a section in the page by section id.',
+        {
+          sectionId: { type: 'string' }
+        },
+        function(args) {
+          const target = document.getElementById(args.sectionId);
+          if (!target) {
+            return {
+              content: [{
+                type: 'text',
+                text: `Section "${args.sectionId}" not found.`
+              }]
+            };
+          }
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return {
+            content: [{
+              type: 'text',
+              text: `Navigated to section "${args.sectionId}".`
+            }]
+          };
+        }
+      );
+
+      mcp.registerTool(
+        'set_language',
+        'Set website language to es, en, or pt.',
+        {
+          language: { type: 'string' }
+        },
+        function(args) {
+          const lang = String(args.language || '').toLowerCase();
+          if (!supportedLanguages.includes(lang)) {
+            return {
+              content: [{
+                type: 'text',
+                text: 'Invalid language. Use: es, en, pt.'
+              }]
+            };
+          }
+          localStorage.setItem('myhelp_lang', lang);
+          setTimeout(() => {
+            window.location.reload();
+          }, 120);
+          return {
+            content: [{
+              type: 'text',
+              text: `Language updated to "${lang}". Reloading page now.`
+            }]
+          };
+        }
+      );
+
+      mcp.registerTool(
+        'list_sections',
+        'List key section ids available on this landing page.',
+        {},
+        function() {
+          const sectionIds = ['features', 'impact', 'faq', 'download', 'contact'];
+          return {
+            content: [{
+              type: 'text',
+              text: `Available sections: ${sectionIds.join(', ')}`
+            }]
+          };
+        }
+      );
+
+      mcp.registerPrompt(
+        'myhelp-summary',
+        'Generate a concise summary of this landing page.',
+        [],
+        function() {
+          const textContent = document.body.innerText
+            .replace(/\s+/g, ' ')
+            .trim()
+            .slice(0, 3500);
+          return {
+            messages: [
+              {
+                role: 'user',
+                content: {
+                  type: 'text',
+                  text: `Summarize this landing page in 6 bullets:\n\n${textContent}`
+                }
+              }
+            ]
+          };
+        }
+      );
+
+      mcp.registerResource(
+        'landing-content',
+        'Current landing page HTML content',
+        {
+          uri: 'page://myhelp-landing',
+          mimeType: 'text/html'
+        },
+        function(uri) {
+          return {
+            contents: [
+              {
+                uri: uri,
+                mimeType: 'text/html',
+                text: document.documentElement.outerHTML
+              }
+            ]
+          };
+        }
+      );
+    }
+
     applyTranslations();
+    initWebMCP();
     loadUnsplashGallery();
 
     if (languageSelect) {
