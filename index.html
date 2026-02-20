@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyHelp ONG | Ayuda social en tu bolsillo</title>
+  <meta name="description" content="MyHelp ONG conecta voluntarios, donantes y causas locales desde una app movil simple, rapida y segura." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#15803D',
+            secondary: '#4ADE80',
+            cta: '#16A34A',
+            ink: '#14532D',
+            shell: '#F0FDF4',
+            night: '#052E16'
+          },
+          fontFamily: {
+            display: ['Sora', 'sans-serif'],
+            body: ['Manrope', 'sans-serif']
+          },
+          boxShadow: {
+            glow: '0 20px 60px -25px rgba(22, 163, 74, 0.45)'
+          },
+          keyframes: {
+            floaty: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' }
+            }
+          },
+          animation: {
+            floaty: 'floaty 5s ease-in-out infinite'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Manrope, sans-serif; }
+    .bg-grid {
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(20, 83, 45, 0.15) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-shell text-night antialiased selection:bg-secondary selection:text-night">
+  <header class="fixed top-4 left-4 right-4 z-50">
+    <nav class="mx-auto max-w-6xl rounded-2xl border border-green-100/80 bg-white/90 backdrop-blur px-4 py-3 shadow-sm md:px-6" aria-label="Principal">
+      <div class="flex items-center justify-between gap-4">
+        <a href="#" class="cursor-pointer font-display text-lg font-bold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"><i class="fa-solid fa-hand-holding-heart mr-2" aria-hidden="true"></i>MyHelp ONG</a>
+        <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-green-900">
+          <a class="cursor-pointer hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#features">Funciones</a>
+          <a class="cursor-pointer hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#impact">Impacto</a>
+          <a class="cursor-pointer hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="#faq">FAQ</a>
+        </div>
+        <a href="#download" class="cursor-pointer inline-flex min-h-11 items-center rounded-xl bg-cta px-4 py-2 text-sm font-bold text-white hover:bg-green-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2"><i class="fa-solid fa-download mr-2" aria-hidden="true"></i>Descargar App</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="overflow-x-hidden">
+    <section class="relative pt-36 pb-20 md:pt-40 md:pb-28">
+      <div class="absolute inset-0 -z-10 bg-grid"></div>
+      <div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
+        <div>
+          <p class="inline-flex items-center rounded-full border border-green-200 bg-white px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">App de impacto social</p>
+          <h1 class="mt-5 font-display text-4xl font-extrabold leading-tight text-ink sm:text-5xl">Conecta ayuda real con personas reales en minutos.</h1>
+          <p class="mt-5 max-w-xl text-base leading-7 text-green-900 sm:text-lg">MyHelp ONG une voluntarios, donantes y organizaciones para resolver necesidades locales. Publica, coordina y mide impacto desde una sola app.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#download" class="cursor-pointer inline-flex min-h-11 items-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-glow hover:bg-green-800 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"><i class="fa-solid fa-seedling mr-2" aria-hidden="true"></i>Empieza gratis</a>
+            <a href="#impact" class="cursor-pointer inline-flex min-h-11 items-center rounded-xl border border-green-300 bg-white px-6 py-3 text-sm font-bold text-ink hover:bg-green-50 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"><i class="fa-solid fa-chart-line mr-2" aria-hidden="true"></i>Ver impacto</a>
+          </div>
+          <div class="mt-8 grid grid-cols-3 gap-3 text-center text-sm">
+            <div class="rounded-xl bg-white p-3 shadow-sm"><p class="font-display text-xl font-bold text-primary">4.9</p><p class="text-green-800">Rating</p></div>
+            <div class="rounded-xl bg-white p-3 shadow-sm"><p class="font-display text-xl font-bold text-primary">+12k</p><p class="text-green-800">Voluntarios</p></div>
+            <div class="rounded-xl bg-white p-3 shadow-sm"><p class="font-display text-xl font-bold text-primary">+850</p><p class="text-green-800">ONG activas</p></div>
+          </div>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-md animate-floaty">
+          <div class="absolute -top-4 -left-4 h-24 w-24 rounded-2xl bg-secondary/35 blur-xl"></div>
+          <div class="absolute -bottom-5 -right-6 h-28 w-28 rounded-full bg-cta/30 blur-2xl"></div>
+          <div class="relative rounded-[2.2rem] border-8 border-night bg-night p-3 shadow-2xl">
+            <img class="h-[520px] w-full rounded-[1.4rem] object-cover" src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80" alt="Voluntaria usando la aplicacion MyHelp ONG en un evento social" loading="lazy" />
+            <div class="absolute left-1/2 top-2 h-5 w-28 -translate-x-1/2 rounded-full bg-night"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display text-3xl font-extrabold text-ink">Todo lo que tu ONG necesita para coordinar ayuda</h2>
+        <div class="mt-8 grid gap-5 md:grid-cols-3">
+          <article class="rounded-2xl bg-white p-6 shadow-sm border border-green-100">
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-green-100 text-primary" aria-hidden="true">
+              <i class="fa-solid fa-bell-concierge text-xl"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-ink">Alertas en tiempo real</h3>
+            <p class="mt-2 text-green-900 leading-7">Notificaciones instantaneas para responder emergencias, cambios de turno y nuevas solicitudes de ayuda.</p>
+          </article>
+          <article class="rounded-2xl bg-white p-6 shadow-sm border border-green-100">
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-green-100 text-primary" aria-hidden="true">
+              <i class="fa-solid fa-boxes-stacked text-xl"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-ink">Gestor de recursos</h3>
+            <p class="mt-2 text-green-900 leading-7">Controla inventario, donaciones y entregas con trazabilidad para que cada aporte llegue donde debe.</p>
+          </article>
+          <article class="rounded-2xl bg-white p-6 shadow-sm border border-green-100">
+            <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-green-100 text-primary" aria-hidden="true">
+              <i class="fa-solid fa-chart-column text-xl"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-ink">Reporte de impacto</h3>
+            <p class="mt-2 text-green-900 leading-7">Visualiza beneficiarios atendidos, horas de voluntariado y progreso de campañas con metricas claras.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact" class="py-16 md:py-20 bg-white">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-4">
+          <h2 class="font-display text-3xl font-extrabold text-ink">Historias reales de comunidad</h2>
+          <p id="gallery-status" class="text-sm font-semibold text-green-700">Cargando imagenes...</p>
+        </div>
+        <div id="unsplash-gallery" class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl bg-gradient-to-r from-primary to-green-500 p-8 text-white md:p-10">
+          <h2 class="font-display text-3xl font-extrabold">Lo que dicen las organizaciones</h2>
+          <div class="mt-7 grid gap-4 md:grid-cols-3">
+            <blockquote class="rounded-2xl bg-white/15 p-5">
+              <p class="leading-7">"Redujimos 40% el tiempo de coordinacion de brigadas en solo dos meses."</p>
+              <footer class="mt-3 text-sm font-bold">Fundacion Barrio Vivo</footer>
+            </blockquote>
+            <blockquote class="rounded-2xl bg-white/15 p-5">
+              <p class="leading-7">"La transparencia de donaciones nos ayudo a ganar confianza de nuevos aliados."</p>
+              <footer class="mt-3 text-sm font-bold">Casa Solidaria</footer>
+            </blockquote>
+            <blockquote class="rounded-2xl bg-white/15 p-5">
+              <p class="leading-7">"MyHelp nos dio trazabilidad total desde la donacion hasta la entrega."</p>
+              <footer class="mt-3 text-sm font-bold">Comedor Esperanza</footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-16 md:py-20 bg-white">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display text-3xl font-extrabold text-ink">Preguntas frecuentes</h2>
+        <div class="mt-6 space-y-3">
+          <details class="rounded-xl border border-green-200 bg-green-50 p-4">
+            <summary class="cursor-pointer font-bold text-ink">La app tiene costo para ONG?</summary>
+            <p class="mt-2 text-green-900 leading-7">Tenemos un plan gratuito para organizaciones pequeñas y planes escalables para redes grandes.</p>
+          </details>
+          <details class="rounded-xl border border-green-200 bg-green-50 p-4">
+            <summary class="cursor-pointer font-bold text-ink">Puedo invitar voluntarios por zona?</summary>
+            <p class="mt-2 text-green-900 leading-7">Si. Puedes segmentar por distrito, disponibilidad y habilidades para activar turnos mas rapido.</p>
+          </details>
+          <details class="rounded-xl border border-green-200 bg-green-50 p-4">
+            <summary class="cursor-pointer font-bold text-ink">Cumple con privacidad de datos?</summary>
+            <p class="mt-2 text-green-900 leading-7">Implementamos permisos por rol, cifrado en transito y buenas practicas de proteccion de datos.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 rounded-3xl border border-green-200 bg-white p-8 md:grid-cols-2 md:items-center md:p-10">
+          <div>
+            <h2 class="font-display text-3xl font-extrabold text-ink">Descarga MyHelp ONG y multiplica tu impacto</h2>
+            <p class="mt-4 text-green-900 leading-7">Disponible para iOS y Android. Activa campañas, coordina voluntarios y comparte resultados en tiempo real.</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#" class="cursor-pointer inline-flex min-h-11 items-center rounded-xl bg-night px-5 py-3 text-sm font-bold text-white hover:bg-green-950 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-night focus-visible:ring-offset-2"><i class="fa-brands fa-apple mr-2 text-base" aria-hidden="true"></i>App Store</a>
+              <a href="#" class="cursor-pointer inline-flex min-h-11 items-center rounded-xl bg-cta px-5 py-3 text-sm font-bold text-white hover:bg-green-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2"><i class="fa-brands fa-google-play mr-2 text-sm" aria-hidden="true"></i>Google Play</a>
+            </div>
+          </div>
+          <div class="flex items-center justify-center">
+            <img class="h-44 w-44 rounded-2xl border border-green-200 p-2" src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://myhelp-ong.app" alt="Codigo QR para descargar MyHelp ONG" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-green-200 bg-white">
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 py-8 text-center text-sm text-green-800 sm:px-6 lg:px-8 md:flex-row md:items-center md:justify-between md:text-left">
+      <p>© 2026 MyHelp ONG. Tecnologia para causas que importan.</p>
+      <a href="#" class="cursor-pointer font-bold text-primary hover:text-green-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"><i class="fa-regular fa-envelope mr-2" aria-hidden="true"></i>Contacto</a>
+    </div>
+  </footer>
+
+  <script>
+    const unsplashAccessKey = '6Q6pM5tWCPXXgkvrAd9b6dqsSoUfrBkFsPBLnkLVjlo';
+    const gallery = document.getElementById('unsplash-gallery');
+    const statusText = document.getElementById('gallery-status');
+
+    const skeletons = Array.from({ length: 6 }).map(() => `
+      <div class="h-56 rounded-2xl bg-green-100 animate-pulse" aria-hidden="true"></div>
+    `).join('');
+    gallery.innerHTML = skeletons;
+
+    const fallbackImages = [
+      'https://images.unsplash.com/photo-1469571486292-b53601020efb?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1593113598332-cd59a93f7f4c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1531206715517-5c2f357eb9d2?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1526976668912-1a811878dd37?auto=format&fit=crop&w=1200&q=80'
+    ];
+    const ngoNames = [
+      'Fundacion Barrio Vivo',
+      'Casa Solidaria',
+      'Comedor Esperanza',
+      'Manos por la Infancia',
+      'Red de Apoyo Comunitario',
+      'Puentes de Vida'
+    ];
+
+    function renderImages(urls) {
+      gallery.innerHTML = urls.map((item, idx) => {
+        const url = typeof item === 'string' ? item : item.urls.regular;
+        const alt = typeof item === 'string' ? `Escena comunitaria ${idx + 1}` : (item.alt_description || `Escena comunitaria ${idx + 1}`);
+        const ngoName = ngoNames[idx % ngoNames.length];
+        return `
+          <figure class="group overflow-hidden rounded-2xl border border-green-100 bg-white shadow-sm">
+            <img src="${url}" alt="${alt}" class="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+            <figcaption class="px-4 py-3 text-xs font-semibold text-green-800">ONG aliada: ${ngoName}</figcaption>
+          </figure>
+        `;
+      }).join('');
+    }
+
+    async function loadUnsplashGallery() {
+      try {
+        const endpoint = `https://api.unsplash.com/search/photos?query=community%20volunteer%20nonprofit&orientation=landscape&per_page=6&client_id=${unsplashAccessKey}`;
+        const res = await fetch(endpoint);
+        if (!res.ok) throw new Error('Unsplash request failed');
+        const data = await res.json();
+        if (!data.results || !data.results.length) throw new Error('No images found');
+        renderImages(data.results);
+        statusText.textContent = 'Imagenes cargadas desde Unsplash API';
+      } catch (error) {
+        renderImages(fallbackImages);
+        statusText.textContent = 'Modo fallback activo (sin conexion a Unsplash API)';
+      }
+    }
+
+    loadUnsplashGallery();
+  </script>
+</body>
+</html>
