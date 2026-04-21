@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eliminar cuenta | MyHelp</title>
+  <meta name="description" content="Cómo eliminar tu cuenta de MyHelp y los datos asociados." />
+  <meta name="theme-color" content="#15803D" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://myhelpsocial.netlify.app/delete-account.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #15803D;
+      --primary-dark: #166534;
+      --accent: #8BD9A8;
+      --bg: #FFFFFF;
+      --bg-soft: #F0FDF4;
+      --border: #DCFCE7;
+      --danger-bg: #FEF2F2;
+      --danger-border: #FECACA;
+      --danger: #B91C1C;
+      --text: #111827;
+      --muted: #6B7280;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--primary);
+      font-family: 'Sora', sans-serif;
+    }
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--primary);
+      display: inline-block;
+    }
+    .brand-name {
+      font-size: 22px;
+      font-weight: 800;
+    }
+    h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 34px;
+      margin: 24px 0 4px;
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: var(--muted);
+      margin: 0;
+      font-size: 14px;
+    }
+    h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 22px;
+      margin-top: 40px;
+      color: var(--text);
+      border-left: 4px solid var(--primary);
+      padding-left: 14px;
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 17px;
+      margin-top: 24px;
+      color: var(--text);
+      font-weight: 700;
+    }
+    p, li {
+      font-size: 15px;
+    }
+    ul, ol {
+      padding-left: 22px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .callout {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .callout-warn {
+      background: var(--danger-bg);
+      border-color: var(--danger-border);
+    }
+    .callout-warn strong {
+      color: var(--danger);
+    }
+    .step {
+      counter-increment: step;
+      padding: 18px 22px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 14px;
+      position: relative;
+      padding-left: 70px;
+    }
+    .step::before {
+      content: counter(step);
+      position: absolute;
+      left: 18px;
+      top: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .step h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .steps {
+      counter-reset: step;
+      margin: 16px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--bg-soft);
+      font-weight: 700;
+    }
+    .email-link {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff !important;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+    .email-link:hover {
+      background: var(--primary-dark);
+      text-decoration: none !important;
+    }
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="/" class="brand">
+        <span class="brand-mark"></span>
+        <span class="brand-name">MyHelp</span>
+      </a>
+      <h1>Eliminar tu cuenta</h1>
+      <p class="subtitle">Última actualización: 20 de abril de 2026</p>
+    </header>
+
+    <p>
+      Esta página te explica cómo solicitar la eliminación de tu cuenta de
+      <strong>MyHelp</strong> (paquete <code>app.myhelp</code>) y todos los
+      datos personales asociados.
+    </p>
+
+    <div class="callout callout-warn">
+      <strong>Importante:</strong> la eliminación es permanente.
+      Vas a perder tu historial de pedidos, ofertas, contribuciones,
+      mensajes y reseñas. No se puede revertir.
+    </div>
+
+    <h2>Cómo solicitar la eliminación</h2>
+    <p>Tenés 2 caminos:</p>
+
+    <h3>Opción A · Desde la app</h3>
+    <div class="steps">
+      <div class="step">
+        <h3>Abrí la app MyHelp</h3>
+        <p>Iniciá sesión con tu cuenta.</p>
+      </div>
+      <div class="step">
+        <h3>Andá a tu Perfil</h3>
+        <p>Tab inferior derecho → "Perfil".</p>
+      </div>
+      <div class="step">
+        <h3>Tocá "Privacidad y seguridad"</h3>
+        <p>O directamente "Ajustes" → sección Cuenta.</p>
+      </div>
+      <div class="step">
+        <h3>Tocá "Eliminar cuenta"</h3>
+        <p>
+          Vas a ver un mensaje pidiéndote confirmación. Hoy esa acción
+          abre las instrucciones para escribirnos por email — la opción
+          de borrado in-app automatizado va a estar disponible en la
+          próxima versión.
+        </p>
+      </div>
+    </div>
+
+    <h3>Opción B · Por email</h3>
+    <p>
+      Mandanos un email desde la dirección con la que te registraste,
+      con el asunto <strong>"Eliminar mi cuenta MyHelp"</strong>:
+    </p>
+    <p>
+      <a href="mailto:mauricioveron1@gmail.com?subject=Eliminar%20mi%20cuenta%20MyHelp" class="email-link">
+        📧 mauricioveron1@gmail.com
+      </a>
+    </p>
+    <p>
+      Procesamos tu pedido en un plazo de hasta <strong>30 días</strong>.
+      Te confirmamos por email cuando la eliminación esté completa.
+    </p>
+
+    <h2>Qué datos se eliminan</h2>
+    <p>Borramos completamente:</p>
+    <ul>
+      <li>Tu perfil: nombre, apellido, email, teléfono, foto, biografía, intereses.</li>
+      <li>Tu ubicación (provincia, ciudad, dirección aproximada, geohash).</li>
+      <li>Pedidos de ayuda que creaste y sus fotos adjuntas.</li>
+      <li>Ofertas que hiciste a otros pedidos.</li>
+      <li>Mensajes en chats 1:1 (de tu lado de la conversación).</li>
+      <li>Contribuciones a campañas de ONGs.</li>
+      <li>Reseñas que escribiste (se borra el contenido y tu identificación).</li>
+      <li>Mensajes que enviaste a la bandeja de ONGs.</li>
+      <li>Datos de verificación de identidad (DNI/documentos KYC).</li>
+      <li>Tokens de notificaciones push (FCM).</li>
+      <li>Configuración de privacidad y notificaciones.</li>
+    </ul>
+
+    <h2>Qué datos se conservan (y por cuánto tiempo)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Dato</th>
+          <th>Período</th>
+          <th>Por qué</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Reseñas que recibiste de otros</td>
+          <td>Permanente, anonimizadas</td>
+          <td>Construyen el rating de las personas que te ayudaron — borrarlas perjudica a terceros inocentes. Tu nombre se reemplaza por "Usuario eliminado".</td>
+        </tr>
+        <tr>
+          <td>Reportes de seguridad asociados a tu cuenta</td>
+          <td>Hasta 2 años</td>
+          <td>Para investigaciones internas de fraude o abuso. Conservación obligatoria por compliance.</td>
+        </tr>
+        <tr>
+          <td>Métricas anónimas de uso</td>
+          <td>Permanente, agregadas</td>
+          <td>Sin identificación personal — solo conteos agregados (ej. "1500 pedidos completados").</td>
+        </tr>
+        <tr>
+          <td>Backups del sistema</td>
+          <td>30 días tras la eliminación</td>
+          <td>Política de backups de Firebase. Después se purgan automáticamente.</td>
+        </tr>
+        <tr>
+          <td>Logs técnicos (Crashlytics)</td>
+          <td>90 días</td>
+          <td>Stack traces sin tu identificador para debuggear errores históricos.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>¿Y si solo quiero borrar parte de mis datos?</h2>
+    <p>
+      Hoy la eliminación es total — borrás tu cuenta completa o no borrás nada.
+      Si querés borrar solo un pedido o una contribución específica, podés:
+    </p>
+    <ul>
+      <li><strong>Cancelar un pedido</strong>: desde el detalle del pedido →
+          "Cancelar pedido". Queda marcado como cancelado pero no se borra
+          (los offerers ya lo vieron).</li>
+      <li><strong>Cancelar una oferta</strong>: desde "Mis ofertas" →
+          tarjeta de la oferta → "Cancelar oferta".</li>
+      <li><strong>Editar tu perfil</strong>: cambiar foto, bio o intereses
+          desde Perfil → "Editar perfil".</li>
+    </ul>
+
+    <h2>Soporte</h2>
+    <p>
+      ¿Dudas sobre el proceso o algo no funcionó?
+      <br>
+      📧 <a href="mailto:mauricioveron1@gmail.com">mauricioveron1@gmail.com</a>
+      <br>
+      Política de privacidad completa: <a href="/privacy.html">/privacy.html</a>
+    </p>
+
+    <footer>
+      © 2026 MyHelp · <a href="/">Inicio</a>
+    </footer>
+  </div>
+</body>
+</html>
